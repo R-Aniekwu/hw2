@@ -141,7 +141,8 @@ batman_begins = Movie.new
 batman_begins["title"] = "Batman Begins"
 batman_begins["year_released"] = "2005"
 batman_begins["rated"] = "PG-13"
-batman_begins["studio_id"] = warner_bros[0]
+warner_bros_id = Studio.find_by({"name" => "Warner Bros."}).inspect
+batman_begins["studio_id"] = warner_bros_id["id"]
 batman_begins.save
 
 christian_bale = Actor.new
@@ -165,31 +166,32 @@ gary_oldman["name"] = "Gary Oldman"
 gary_oldman.save
 
 bruce_wayne = Role.new
-bruce_wayne["movie_id"] = batman_begins[0]
-bruce_wayne["actor_id"] = christian_bale[0]
+batman_begins_id = Movie.find_by({"title" => "Batman Begins"}).inspect
+bruce_wayne["movie_id"] = batman_begins_id["id"]
+bruce_wayne["actor_id"] = Actor.find_by({"id" => christian_bale["id"]})
 bruce_wayne["character_name"] = "Bruce Wayne"
 bruce_wayne.save
 
 alfred = Role.new
-alfred["movie_id"] = batman_begins[0]
+alfred["movie_id"] = batman_begins_id["id"]
 alfred["actor_id"] = michael_caine[0]
 alfred["character_name"] = "Alfred"
 alfred.save
 
 ras_al_ghul = Role.new
-ras_al_ghul["movie_id"] = batman_begins[0]
+ras_al_ghul["movie_id"] = batman_begins_id["id"]
 ras_al_ghul["actor_id"] = liam_neeson[0]
 ras_al_ghul["character_name"] = "Ra's Al Ghul"
 ras_al_ghul.save
 
 rachel_dawes = Role.new
-rachel_dawes["movie_id"] = batman_begins[0]
+rachel_dawes["movie_id"] = batman_begins_id["id"]
 rachel_dawes["actor_id"] = katie_holmes[0]
 rachel_dawes["character_name"] = "Rachel Dawes"
 rachel_dawes.save
 
 commissioner_gordon = Role.new
-commissioner_gordon["movie_id"] = batman_begins[0]
+commissioner_gordon["movie_id"] = batman_begins_id["id"]
 commissioner_gordon["actor_id"] = gary_oldman[0]
 commissioner_gordon["character_name"] = "Commissioner Gordon"
 commissioner_gordon.save
@@ -200,7 +202,7 @@ the_dark_knight = Movie.new
 the_dark_knight["title"] = "The Dark Knight"
 the_dark_knight["year_released"] = "2008"
 the_dark_knight["rated"] = "PG-13"
-the_dark_knight["studio_id"] = warner_bros[0]
+the_dark_knight["studio_id"] = warner_bros_id["id"]
 the_dark_knight.save
 
 heath_ledger = Actor.new
@@ -251,7 +253,7 @@ the_dark_knight_rises = Movie.new
 the_dark_knight_rises["title"] = "The Dark Knight Rises"
 the_dark_knight_rises["year_released"] = "2012"
 the_dark_knight_rises["rated"] = "PG-13"
-the_dark_knight_rises["studio_id"] = warner_bros["0"]
+the_dark_knight_rises["studio_id"] = warner_bros_id["id"]
 the_dark_knight_rises.save
 
 tom_hardy = Actor.new
@@ -296,11 +298,13 @@ selina_kyle["actor_id"] = anne_hathaway[0]
 selina_kyle["character_name"] = "Selina Kyle"
 selina_kyle.save
 
+puts Movie.all.inspect
 
 # Prints a header for the movies output
+puts ""
 puts "Movies"
 puts "======"
-puts ""
+
 
 # Query the movies data and loop through the results to display the movies output.
 # TODO!
@@ -313,3 +317,6 @@ puts ""
 
 # Query the cast data and loop through the results to display the cast output for each movie.
 # TODO!
+
+sample = Studio.find_by({"name" => "Warner Bros."}).inspect
+puts sample
