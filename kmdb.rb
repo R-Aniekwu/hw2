@@ -141,7 +141,7 @@ batman_begins = Movie.new
 batman_begins["title"] = "Batman Begins"
 batman_begins["year_released"] = "2005"
 batman_begins["rated"] = "PG-13"
-warner_bros_id = Studio.find_by({"name" => "Warner Bros."}).inspect
+warner_bros_id = Studio.find_by({"name" => "Warner Bros."})
 batman_begins["studio_id"] = warner_bros_id["id"]
 batman_begins.save
 
@@ -165,34 +165,40 @@ gary_oldman = Actor.new
 gary_oldman["name"] = "Gary Oldman"
 gary_oldman.save
 
-bruce_wayne = Role.new
 batman_begins_id = Movie.find_by({"title" => "Batman Begins"}).inspect
+
+bruce_wayne = Role.new
 bruce_wayne["movie_id"] = batman_begins_id["id"]
-bruce_wayne["actor_id"] = Actor.find_by({"id" => christian_bale["id"]})
+christian_bale_id = Actor.find_by({"name" => "Christian Bale"}).inspect
+bruce_wayne["actor_id"] = christian_bale_id["id"]
 bruce_wayne["character_name"] = "Bruce Wayne"
 bruce_wayne.save
 
 alfred = Role.new
 alfred["movie_id"] = batman_begins_id["id"]
-alfred["actor_id"] = michael_caine[0]
+michael_caine_id = Actor.find_by({"name" => "Michael Cain"}).inspect
+alfred["actor_id"] = michael_caine_id["id"]
 alfred["character_name"] = "Alfred"
 alfred.save
 
 ras_al_ghul = Role.new
 ras_al_ghul["movie_id"] = batman_begins_id["id"]
-ras_al_ghul["actor_id"] = liam_neeson[0]
+liam_neeson_id = Actor.find_by({"name" => "Liam Neeson"}).inspect
+ras_al_ghul["actor_id"] = liam_neeson_id["id"]
 ras_al_ghul["character_name"] = "Ra's Al Ghul"
 ras_al_ghul.save
 
 rachel_dawes = Role.new
 rachel_dawes["movie_id"] = batman_begins_id["id"]
-rachel_dawes["actor_id"] = katie_holmes[0]
+katie_holmes_id = Actor.find_by({"name" => "Katie Holmes"}).inspect
+ras_al_ghul["actor_id"] = katie_holmes_id["id"]
 rachel_dawes["character_name"] = "Rachel Dawes"
 rachel_dawes.save
 
 commissioner_gordon = Role.new
 commissioner_gordon["movie_id"] = batman_begins_id["id"]
-commissioner_gordon["actor_id"] = gary_oldman[0]
+gary_oldman_id = Actor.find_by({"name" => "Gary Oldman"}).inspect
+commissioner_gordon["actor_id"] = gary_oldman_id["id"]
 commissioner_gordon["character_name"] = "Commissioner Gordon"
 commissioner_gordon.save
 
@@ -217,33 +223,37 @@ maggie_gyllenhaal = Actor.new
 maggie_gyllenhaal["name"] = "Maggie Gyllenhaal"
 maggie_gyllenhaal.save
 
+the_dark_knight_id = Movie.find_by({"title" => "The Dark Knight"}).inspect
+
 bruce_wayne_2 = Role.new
-bruce_wayne_2["movie_id"] = the_dark_knight[0]
-bruce_wayne_2["actor_id"] = christian_bale[0]
+bruce_wayne_2["movie_id"] = the_dark_knight_id["id"]
+bruce_wayne_2["actor_id"] = christian_bale_id["id"]
 bruce_wayne_2["character_name"] = "Bruce Wayne"
 bruce_wayne_2.save
 
 joker = Role.new
-joker["movie_id"] = the_dark_knight[0]
-joker["actor_id"] = heath_ledger[0]
+joker["movie_id"] = the_dark_knight_id["id"]
+heath_ledger_id = Actor.find_by({"name" => "Heath Ledger"}).inspect
+joker["actor_id"] = heath_ledger_id["id"]
 joker["character_name"] = "Joker"
 joker.save
 
 harvey_dent = Role.new
-harvey_dent["movie_id"] = the_dark_knight[0]
-harvey_dent["actor_id"] = aaron_eckhart[0]
+harvey_dent["movie_id"] = the_dark_knight_id["id"]
+aaron_eckhart_id = Actor.find_by({"name" => "Aaron Eckhart"}).inspect
+harvey_dent["actor_id"] = aaron_eckhart_id["id"]
 harvey_dent["character_name"] = "Joker"
 harvey_dent.save
 
 alfred_2 = Role.new
-alfred_2["movie_id"] = the_dark_knight[0]
-alfred_2["actor_id"] = michael_caine[0]
+alfred_2["movie_id"] = the_dark_knight_id["id"]
+alfred_2["actor_id"] = michael_caine_id["id"]
 alfred_2["character_name"] = "Alfred"
 alfred_2.save
 
 rachel_dawes_2 = Role.new
-rachel_dawes_2["movie_id"] = the_dark_knight
-rachel_dawes_2["actor_id"] = katie_holmes[0]
+rachel_dawes_2["movie_id"] = the_dark_knight_id["id"]
+rachel_dawes_2["actor_id"] = katie_holmes_id["id"]
 rachel_dawes_2["character_name"] = "Rachel Dawes"
 rachel_dawes_2.save
 
@@ -268,33 +278,38 @@ anne_hathaway = Actor.new
 anne_hathaway["name"] = "Anne Hathaway"
 anne_hathaway.save
 
+the_dark_knight_rises_id = Movie.find_by({"title" => "The Dark Knight Rises"}).inspect
+
 bruce_wayne_3 = Role.new
-bruce_wayne_3["movie_id"] = the_dark_knight_rises[0]
-bruce_wayne_3["actor_id"] = christian_bale[0]
+bruce_wayne_3["movie_id"] = the_dark_knight_rises_id["id"]
+bruce_wayne_3["actor_id"] = christian_bale_id["id"]
 bruce_wayne_3["character_name"] = "Bruce Wayne"
 bruce_wayne_3.save
 
-commissioner_gordon_3 = Role.new
-commissioner_gordon_3["movie_id"] = the_dark_knight_rises[0]
-commissioner_gordon_3["actor_id"] = gary_oldman[0]
-commissioner_gordon_3["character_name"] = "Commissioner Gordon"
-commissioner_gordon_3.save
+commissioner_gordon_2 = Role.new
+commissioner_gordon_2["movie_id"] = the_dark_knight_rises_id["id"]
+commissioner_gordon_2["actor_id"] = gary_oldman_id["id"]
+commissioner_gordon_2["character_name"] = "Commissioner Gordon"
+commissioner_gordon_2.save
 
 bane = Role.new
-bane["movie_id"] = the_dark_knight_rises
-bane["actor_id"] = tom_hardy[0]
+bane["movie_id"] = the_dark_knight_rises_id["id"]
+tom_hardy_id = Actor.find_by({"name" => "Tom Hardy"}).inspect
+bane["actor_id"] = tom_hardy_id["id"]
 bane["character_name"] = "Bane"
 bane.save
 
 john_blake = Role.new
-john_blake["movie_id"] = the_dark_knight_rises[0]
-john_blake["actor_id"] = jospeh_gordon_levitt[0]
+john_blake["movie_id"] = the_dark_knight_rises_id["id"]
+jospeh_gordon_levitt_id = Actor.find_by({"name" => "Joseph Gordon-Levitt"}).inspect
+john_blake["actor_id"] = jospeh_gordon_levitt_id["id"]
 john_blake["character_name"] = "John Blake"
 john_blake.save
 
 selina_kyle = Role.new
-selina_kyle["movie_id"] = the_dark_knight_rises[0]
-selina_kyle["actor_id"] = anne_hathaway[0]
+selina_kyle["movie_id"] = the_dark_knight_rises_id["id"]
+anne_hathaway_id = Actor.find_by({"name" => "Anne Hathaway"}).inspect
+selina_kyle["actor_id"] = anne_hathaway_id["id"]
 selina_kyle["character_name"] = "Selina Kyle"
 selina_kyle.save
 
@@ -305,18 +320,24 @@ puts ""
 puts "Movies"
 puts "======"
 
-
 # Query the movies data and loop through the results to display the movies output.
 # TODO!
+
+movies = Movie.all
+for movie in movies
+    puts "#{movie["title"]}, #{movie["year_released"]}, #{movie["rated"]}, #{movie["studio_id"]}"
+end
 
 # Prints a header for the cast output
 puts ""
 puts "Top Cast"
 puts "========"
-puts ""
+
 
 # Query the cast data and loop through the results to display the cast output for each movie.
 # TODO!
 
-sample = Studio.find_by({"name" => "Warner Bros."}).inspect
-puts sample
+top_casts = Role.all
+for top_cast in top_casts
+    puts "#{top_cast["movie_id"]}, #{top_cast["actor_id"]}, #{top_cast["character_name"]}"
+end
