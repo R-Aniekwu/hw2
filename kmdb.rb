@@ -79,31 +79,51 @@ Role.destroy_all
 
 # Generate models and tables, according to the domain model.
 # TODO!
-## Did this in my terminal
 
-# create_table :studios do |t|
-#     t.string "name"
-#     t.timestamps
+# rails generate model Studio
+# rails generate model Movie
+# rails generate model Actor
+# rails generate model Role
+
+# class CreateStudios < ActiveRecord::Migration[7.1]
+#     def change
+#       create_table :studios do |t|
+#         t.string "name"
+#         t.timestamps
+#       end
+#     end
 # end
 
-# create_table :movies do |t|
-#     t.string "title"
-#     t.integer "year_released"
-#     t.string "rated"
-#     t.integer "studio_id"
-#     t.timestamps
+# class CreateMovies < ActiveRecord::Migration[7.1]
+#     def change
+#       create_table :movies do |t|
+#         t.string "title"
+#         t.integer "year_released"
+#         t.string "rated"
+#         t.integer "studio_id"
+#         t.timestamps
+#       end
+#     end
 # end
 
-# create_table :actors do |t|
-#     t.string "name"
-#     t.timestamps
+# class CreateActors < ActiveRecord::Migration[7.1]
+#     def change
+#       create_table :actors do |t|
+#         t.string "name"
+#         t.timestamps
+#       end
+#     end
 # end
 
-# create_table :roles do |t|
-#     t.integer "movie_id"
-#     t.integer "actor_id"
-#     t.string "character_name"
-#     t.timestamps
+# class CreateRoles < ActiveRecord::Migration[7.1]
+#     def change
+#       create_table :roles do |t|
+#         t.integer "movie_id"
+#         t.integer "actor_id"
+#         t.string "character_name"
+#         t.timestamps
+#       end
+#     end
 # end
 
 
@@ -145,32 +165,32 @@ gary_oldman["name"] = "Gary Oldman"
 gary_oldman.save
 
 bruce_wayne = Role.new
-bruce_wayne["movie_id"] = 
-bruce_wayne["actor_id"] = 
+bruce_wayne["movie_id"] = batman_begins[0]
+bruce_wayne["actor_id"] = christian_bale[0]
 bruce_wayne["character_name"] = "Bruce Wayne"
 bruce_wayne.save
 
 alfred = Role.new
-alfred["movie_id"] = 
-alfred["actor_id"] = 
+alfred["movie_id"] = batman_begins[0]
+alfred["actor_id"] = michael_caine[0]
 alfred["character_name"] = "Alfred"
 alfred.save
 
 ras_al_ghul = Role.new
-ras_al_ghul["movie_id"] = 
-ras_al_ghul["actor_id"] = 
+ras_al_ghul["movie_id"] = batman_begins[0]
+ras_al_ghul["actor_id"] = liam_neeson[0]
 ras_al_ghul["character_name"] = "Ra's Al Ghul"
 ras_al_ghul.save
 
 rachel_dawes = Role.new
-rachel_dawes["movie_id"] = 
-rachel_dawes["actor_id"] = 
+rachel_dawes["movie_id"] = batman_begins[0]
+rachel_dawes["actor_id"] = katie_holmes[0]
 rachel_dawes["character_name"] = "Rachel Dawes"
 rachel_dawes.save
 
 commissioner_gordon = Role.new
-commissioner_gordon["movie_id"] = 
-commissioner_gordon["actor_id"] = 
+commissioner_gordon["movie_id"] = batman_begins[0]
+commissioner_gordon["actor_id"] = gary_oldman[0]
 commissioner_gordon["character_name"] = "Commissioner Gordon"
 commissioner_gordon.save
 
@@ -196,32 +216,32 @@ maggie_gyllenhaal["name"] = "Maggie Gyllenhaal"
 maggie_gyllenhaal.save
 
 bruce_wayne_2 = Role.new
-bruce_wayne_2["movie_id"] = 
-bruce_wayne_2["actor_id"] = 
+bruce_wayne_2["movie_id"] = the_dark_knight[0]
+bruce_wayne_2["actor_id"] = christian_bale[0]
 bruce_wayne_2["character_name"] = "Bruce Wayne"
 bruce_wayne_2.save
 
 joker = Role.new
-joker["movie_id"] = 
-joker["actor_id"] = 
+joker["movie_id"] = the_dark_knight[0]
+joker["actor_id"] = heath_ledger[0]
 joker["character_name"] = "Joker"
 joker.save
 
 harvey_dent = Role.new
-harvey_dent["movie_id"] = 
-harvey_dent["actor_id"] = 
+harvey_dent["movie_id"] = the_dark_knight[0]
+harvey_dent["actor_id"] = aaron_eckhart[0]
 harvey_dent["character_name"] = "Joker"
 harvey_dent.save
 
 alfred_2 = Role.new
-alfred_2["movie_id"] = 
-alfred_2["actor_id"] = 
+alfred_2["movie_id"] = the_dark_knight[0]
+alfred_2["actor_id"] = michael_caine[0]
 alfred_2["character_name"] = "Alfred"
 alfred_2.save
 
 rachel_dawes_2 = Role.new
-rachel_dawes_2["movie_id"] = 
-rachel_dawes_2["actor_id"] = 
+rachel_dawes_2["movie_id"] = the_dark_knight
+rachel_dawes_2["actor_id"] = katie_holmes[0]
 rachel_dawes_2["character_name"] = "Rachel Dawes"
 rachel_dawes_2.save
 
@@ -231,7 +251,7 @@ the_dark_knight_rises = Movie.new
 the_dark_knight_rises["title"] = "The Dark Knight Rises"
 the_dark_knight_rises["year_released"] = "2012"
 the_dark_knight_rises["rated"] = "PG-13"
-the_dark_knight_rises["studio_id"] = warner_bros[0]
+the_dark_knight_rises["studio_id"] = warner_bros["0"]
 the_dark_knight_rises.save
 
 tom_hardy = Actor.new
@@ -247,41 +267,34 @@ anne_hathaway["name"] = "Anne Hathaway"
 anne_hathaway.save
 
 bruce_wayne_3 = Role.new
-bruce_wayne_3["movie_id"] = 
-bruce_wayne_3["actor_id"] = 
+bruce_wayne_3["movie_id"] = the_dark_knight_rises[0]
+bruce_wayne_3["actor_id"] = christian_bale[0]
 bruce_wayne_3["character_name"] = "Bruce Wayne"
 bruce_wayne_3.save
 
 commissioner_gordon_3 = Role.new
-commissioner_gordon_3["movie_id"] = 
-commissioner_gordon_3["actor_id"] = 
+commissioner_gordon_3["movie_id"] = the_dark_knight_rises[0]
+commissioner_gordon_3["actor_id"] = gary_oldman[0]
 commissioner_gordon_3["character_name"] = "Commissioner Gordon"
 commissioner_gordon_3.save
 
 bane = Role.new
-bane["movie_id"] = 
-bane["actor_id"] = 
+bane["movie_id"] = the_dark_knight_rises
+bane["actor_id"] = tom_hardy[0]
 bane["character_name"] = "Bane"
 bane.save
 
 john_blake = Role.new
-john_blake["movie_id"] = 
-john_blake["actor_id"] = 
+john_blake["movie_id"] = the_dark_knight_rises[0]
+john_blake["actor_id"] = jospeh_gordon_levitt[0]
 john_blake["character_name"] = "John Blake"
 john_blake.save
 
 selina_kyle = Role.new
-selina_kyle["movie_id"] = 
-selina_kyle["actor_id"] = 
+selina_kyle["movie_id"] = the_dark_knight_rises[0]
+selina_kyle["actor_id"] = anne_hathaway[0]
 selina_kyle["character_name"] = "Selina Kyle"
 selina_kyle.save
-
-
-
-
-
-
-
 
 
 # Prints a header for the movies output
